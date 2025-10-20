@@ -29,7 +29,7 @@ SSH_KEY="${SSH_KEY:-~/.ssh/id_rsa}"
 read -rp "Application internal container port (e.g., 3000): " APP_PORT
 
 APP_NAME="$(basename -s .git "$GIT_URL")"
-IMAGE_NAME="${APP_NAME,,}"
+IMAGE_NAME="$(echo "$APP_NAME" | tr '[:upper:]' '[:lower:]')"
 REMOTE_BASE_DIR="~/deployments"
 REMOTE_APP_DIR="${REMOTE_BASE_DIR}/${APP_NAME}"
 
